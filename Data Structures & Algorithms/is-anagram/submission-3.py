@@ -1,0 +1,16 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s)!=len(t):
+            return False
+        counter = {}
+        for c in s:
+            if c not in counter:
+                counter[c]=0
+            counter[c]+=1
+        for c in t:
+            if c not in counter:
+                return False
+            counter[c]-=1
+            if counter[c]<0:
+                return False
+        return True    

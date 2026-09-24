@@ -1,0 +1,24 @@
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        res = ''
+        for s in strs:
+            m = len(s)
+            msg = str(m)+"~"+s
+            res+=msg
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        l = 0
+        n = len(s)
+        ans = []
+        while l<n:
+            c = 0
+            while s[l]!='~':
+                c= c*10+int(s[l])
+                l+=1
+            l+=1
+            ans.append(s[l:l+c])
+            l+=c
+        return ans
+
